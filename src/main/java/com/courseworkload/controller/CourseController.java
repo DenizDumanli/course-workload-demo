@@ -1,11 +1,9 @@
 package com.courseworkload.controller;
 
 import com.courseworkload.model.dto.CourseDto;
-import com.courseworkload.model.entity.Course;
 import com.courseworkload.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 
 import java.util.List;
 
@@ -39,5 +37,10 @@ public class CourseController {
     @RequestMapping(value = "/course/{id}", method = RequestMethod.DELETE)
     public CourseDto deleteProduct(@PathVariable long id) {
         return courseService.deleteCourse(id);
+    }
+
+    @RequestMapping(value = "/course/name/{name}", method = RequestMethod.GET)
+    public List<CourseDto> getCoursesByCourseName(@PathVariable String name) {
+        return courseService.getCoursesByCourseName(name);
     }
 }

@@ -4,7 +4,6 @@ import com.courseworkload.model.dto.CourseDto;
 import com.courseworkload.model.entity.Course;
 import com.courseworkload.repository.CourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,6 +11,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
+
 public class CourseService implements CourseServiceInterface {
 
     @Autowired
@@ -56,5 +56,10 @@ public class CourseService implements CourseServiceInterface {
             return tobedeletedCourse.toCourseDto();
         } else
             return null;
+    }
+
+    @Override
+    public List<CourseDto>  getCoursesByCourseName(String name) {
+        return courseRepository.getCoursesByCourseName(name).stream().map(Course::toCourseDto).collect(Collectors.toList());
     }
 }

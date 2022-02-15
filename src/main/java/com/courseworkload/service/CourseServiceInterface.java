@@ -1,7 +1,6 @@
 package com.courseworkload.service;
 
 import com.courseworkload.model.dto.CourseDto;
-import com.courseworkload.model.entity.Course;
 
 import java.util.List;
 
@@ -16,5 +15,7 @@ public interface CourseServiceInterface {
     CourseDto updateCourse(CourseDto course);
 
     CourseDto deleteCourse(long id);
+
+    List<CourseDto> getCoursesByCourseName(String name);
 
 }
